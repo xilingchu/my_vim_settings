@@ -1,0 +1,34 @@
+global !p
+from pysnip import *
+endglobal
+
+snippet class "Class in Python" bA
+class ${1:ClassName}(${2:object}):
+	def __init__(self$3):
+		`!p snip.rv = objectInInit(t[2],t[3])`
+endsnippet
+
+snippet def "Defination in Class" bA
+def ${1:DefinationName}(${2:Variable}):
+	$0
+endsnippet
+
+snippet "exp(_.*_)" "Expanasion of a block" brA
+`!p 
+exp_sym = '#'
+len_dash = 40
+if len(match.group(1)) % 2 == 1:
+	len_dash += 1
+snip.rv = exp_sym + len_dash*'-' + exp_sym `
+`!p snip.rv = expBlock(match.group(1))`
+`!p 
+exp_sym = '#'
+len_dash = 40
+if len(match.group(1)) % 2 == 1:
+	len_dash += 1
+snip.rv = exp_sym + len_dash*'-' + exp_sym `
+endsnippet
+
+snippet "sexp(_.*_)" "Expanasion of a block" brA
+`!p snip.rv = expBlock(match.group(1))`
+endsnippet

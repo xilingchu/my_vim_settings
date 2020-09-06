@@ -1,0 +1,64 @@
+# Snippets for fortran
+global !p
+from forsnip import *
+endglobal
+
+# Basic Usage
+# SUBROUTINE
+snippet sub "Subroutine in fortran" bA
+SUBROUTINE $1($2)
+	IMPLICIT NONE
+	$3
+	RETURN
+END SUBROUTINE $1
+$0
+endsnippet
+
+# IF STATMENT
+snippet if "IF statment in fortran" bA
+IF ($1) THEN
+	$2
+END IF
+$0
+endsnippet
+
+snippet elif "ELSE-IF statment in fortran" bA
+ELSE IF ($1) THEN
+	$2
+$0
+endsnippet 
+
+snippet else "ELSE statment in fortran" bA
+ELSE
+	$1
+$0
+endsnippet
+
+# DO STATMENT
+snippet do "DO statment in fortran" bA
+DO $1 = $2, $3
+	$4
+ENDDO
+$0
+endsnippet
+
+# Explaination of the code.
+snippet "exp(_.*_)" "Explaination of a block" brA
+`!p 
+exp_sym = '!'
+len_dash = 40
+if len(match.group(1)) % 2 == 1:
+	len_dash += 1
+snip.rv = exp_sym + len_dash*'-' + exp_sym `
+`!p snip.rv = expBlock(match.group(1))`
+`!p 
+exp_sym = '!'
+len_dash = 40
+if len(match.group(1)) % 2 == 1:
+	len_dash += 1
+snip.rv = exp_sym + len_dash*'-' + exp_sym `
+endsnippet
+
+snippet "sexp(_.*_)" "Expanasion of a block" brA
+`!p snip.rv = expBlock(match.group(1))`
+endsnippet

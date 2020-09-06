@@ -1,0 +1,253 @@
+global !p
+from tex import *
+endglobal
+
+#That is a snippets file for latex
+#English document header
+snippet head "English document header" bA
+\documentclass{article}
+%Math Fomula
+\usepackage{amsmath}
+%Drawing
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+%For import graphic
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{caption}
+\usepackage{epstopdf}
+%Indent
+\usepackage{indentfirst}
+%Geometry
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{listings}
+\usepackage{lineno}
+\usepackage{float}
+\lstset{breaklines,columns=flexible,frame=shadowbox}
+%Set geometry
+\geometry{papersize={210mm,297mm}}
+\geometry{left=2cm,right=2cm,top=3cm,bottom=4cm}
+%cite
+\bibliographystyle{plain}
+%Text sturcture
+%\renewcommand{\baselinestretch}{1.5}
+\setlength{\parindent}{1em}
+\renewcommand{\figurename}{Fig.}
+\title{$1}
+\author{$2}
+\begin{document}
+$0
+
+\bibliography{cite}
+\end{document}
+
+endsnippet
+
+snippet chead "Chinese document header" bA
+\documentclass[UTF8]{ctexart}
+%Mathmatical
+\usepackage{amsmath}
+%Drawing
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+%Graph
+\usepackage{graphicx}
+\usepackage{subfigure}
+%Geometry
+\usepackage{geometry}
+\usepackage{indentfirst}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{float}
+%Set Geometry
+\geometry{papersize={210mm,297mm}}
+\geometry{left=2cm,right=2cm,top=3cm,bottom=4cm}
+%Text Sturcture
+%\renewcommand{\baselinestretch}{1.5}
+\setlength{\parindent}{2em}
+%cite
+\bibliographystyle{plain}
+%author
+\title{$1}
+\author{$2}
+\begin{document}
+$0
+\bibliography{cite}
+\end{document}
+endsnippet
+
+#That is a snippets file for latex
+#English document header
+snippet phead "English document header" bA
+\documentclass{beamer}
+\mode<presentation>{$1}
+%Math Fomula
+\usepackage{amsmath} %Package to import math formula
+\usepackage{cancel}  %Cancel command
+%Drawing
+\usepackage{tikz}  %Package to plot
+\usepackage{tikz-3dplot} %3dplot
+%Graphic import
+\usepackage{graphicx}  %Import graphics
+\usepackage{animate}   %Import animate
+\usepackage{subfigure} %Use subfigure
+\usepackage{caption}   %Use caption 
+\usepackage{epstopdf}  %Import .eps
+\usepackage{xcolor}    %Color package
+%Struture
+\usepackage{listings}
+\usepackage{lineno}
+%Table
+\usepackage{booktabs}  %Enhance quality of tables
+\usepackage{multirow}  %Specify text in tables
+\lstset{breaklines,columns=flexible,frame=shadowbox}
+\setlength{\parindent}{1em}
+\renewcommand{\figurename}{Fig}
+\renewcommand{\tablename}{Table}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{table}[numbered]
+%Title Information
+\title{$2}
+\author{$3}
+\begin{document}
+$0
+\end{document}
+endsnippet
+
+snippet beg "begin/end" bA
+\begin{$1}
+$2
+\end{$1}
+$0
+endsnippet
+
+snippet cont "Contents" bA
+\tableofcontents
+endsnippet
+
+snippet np "newpage" bA
+\newpage
+endsnippet
+
+snippet title "make title" bA
+\maketitle
+endsnippet
+
+snippet ptitle "make title" bA 
+\titlepage
+endsnippet
+
+snippet ftitle "frame title" bA 
+\frametitle{$1}
+$0
+endsnippet
+
+snippet sec "section" bA
+\section{$1}
+$0
+endsnippet
+
+snippet ssec "subsection" bA 
+\subsection{$1}
+$0
+endsnippet
+
+snippet sssec "subsubsection" bA
+\subsubsection{$1}
+$0
+endsnippet
+
+snippet // "Fraction" iA
+\\frac{$1}{$2}$0
+endsnippet
+
+snippet fig "Import figure" bA
+\begin{figure}
+\centering
+\includegraphics[width=$1\textwidth]{$2}
+\caption{$3}
+\end{figure}
+$0
+endsnippet
+
+snippet sfig "Import subfigure" bA
+\subfigure[$1]{\includegraphics[width=$2\textwidth]{$3}}
+$0
+endsnippet
+
+snippet draw "tikz draw" bA 
+\draw[$1] $2;
+$0
+endsnippet
+
+snippet tik "Start tikzpicture" bA
+\begin{tikzpicture}
+$1
+\end{tikzpicture}
+$0
+endsnippet
+
+snippet daxis "Call axis" bA
+\draw[->] ($1) -- ($2) ;
+\draw[->] ($3) -- ($4) ;
+\node[left] at ($2) {$5} ;
+\node[below] at ($4) {$6} ;
+$0
+endsnippet
+
+snippet dcir "Draw a circle" bA
+\draw[$1] ($2) circle [radius=$3];
+$0
+endsnippet 
+
+snippet drec "Draw a rectangular" bA 
+\draw[$1] ($2) rectangle ($3) ;
+$0
+endsnippet
+
+snippet dfun "Draw a function" bA 
+\draw[domain=$1] plot (\x, {$2});
+$0
+endsnippet 
+
+snippet dtext "Draw text" bA 
+\node[$1] at ($2) {$3};
+$0
+endsnippet
+
+snippet in "indent" bA
+\indent
+$0
+endsnippet
+
+#Py part
+snippet "(table)(\d\d)(\d\d)" "Insert a table" brA
+\begin{tabular}{`!p snip.rv=tableline(match.group(3))`}
+\toprule
+$1`!p snip.rv=table(match.group(2),match.group(3))`
+\bottomrule
+\end{tabular}
+$0
+endsnippet
+
+snippet "exp(_.*_)" "Expanasion of a block" brA
+`!p 
+exp_sym = '%'
+len_dash = 40
+if len(match.group(1)) % 2 == 1:
+	len_dash += 1
+snip.rv = exp_sym + len_dash*'-' + exp_sym `
+`!p snip.rv = expBlock(match.group(1))`
+`!p 
+exp_sym = '%'
+len_dash = 40
+if len(match.group(1)) % 2 == 1:
+	len_dash += 1
+snip.rv = exp_sym + len_dash*'-' + exp_sym `
+endsnippet
+
+snippet "sexp(_.*_)" "Expanasion of a block" brA
+`!p snip.rv = expBlock(match.group(1))`
+endsnippet

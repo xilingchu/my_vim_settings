@@ -1,0 +1,14 @@
+#Part fo gnuplot
+#That is a snippets file for gnuplot
+#English document header
+snippet gnuhead "gnuplot head" bA
+set term epslatex standalone color
+set xlabel '\Large $1'
+set ylabel '\Large $2'
+!set xrange []
+!set yrange []
+set key box
+set output "$3"
+$0
+endsnippet
+ 

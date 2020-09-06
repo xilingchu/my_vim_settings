@@ -1,0 +1,30 @@
+" Use noremap to change the map of keyboard
+" noremap <> <>
+
+" Map different function 
+map Q :q<CR>
+map S :w<CR>
+map <C-c> <esc>
+" Highlight code 
+syntax on
+
+" Set number
+set number
+
+" For search
+set smartcase
+
+" Plugin
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" Use mouse
+set mouse=a
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+
+call vundle#end()
+
