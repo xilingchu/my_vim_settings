@@ -2,7 +2,6 @@
 
 -- Load the default settings of nvim
 vim.cmd('source $VIMRUNTIME/defaults.vim')
-
 -- Dont split a wrod in a sentence
 vim.o.linebreak = true
 -- Set number
