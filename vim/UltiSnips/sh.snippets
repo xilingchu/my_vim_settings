@@ -1,0 +1,23 @@
+global !p
+from shsnip import *
+endglobal
+
+snippet "exp(_.*_)" "Expanasion of a block" brA
+`!p 
+exp_sym = '#'
+len_dash = 40
+if len(match.group(1)) % 2 == 1:
+	len_dash += 1
+snip.rv = exp_sym + len_dash*'-' + exp_sym `
+`!p snip.rv = expBlock(match.group(1))`
+`!p 
+exp_sym = '#'
+len_dash = 40
+if len(match.group(1)) % 2 == 1:
+	len_dash += 1
+snip.rv = exp_sym + len_dash*'-' + exp_sym `
+endsnippet
+
+snippet "sexp(_.*_)" "Expanasion of a block" brA
+`!p snip.rv = expBlock(match.group(1))`
+endsnippet
