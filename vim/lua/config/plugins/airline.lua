@@ -8,7 +8,7 @@ return {
     	init = function()
     		-- load the colorscheme here
 		vim.cmd([[
-    		let g:airline_theme='sol'
+    		let g:airline_theme = 'term'
 		let g:airline#extensions#tabline#enabled = 1
 		let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 		]])

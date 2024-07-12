@@ -27,6 +27,18 @@ local mappings = {
 	{ from = "<esc>", to = "<c-\\><c-n>", mode = mode_t, opt = {desc="esc in terminal", remap=false} },
 	{ from = "<leader>te", to = ":tabnew<cr>:term<cr>", mode = mode_n, opt = {desc="New terminal", remap=false} },
 	{ from = "<leader>gi", to = ":tabnew<cr>:term lazygit<cr>", mode = mode_n, opt = {desc="Open lazygit", remap=false} },
+	-- Switch the background
+	{ from = "<F5>", to = function()
+			if (vim.o.background == "dark")
+			then
+				vim.g.airline_theme = "sol"
+				vim.o.background = "light"
+			else
+				vim.g.airline_theme = "term"
+				vim.o.background = "dark"
+			end
+		end,
+		mode = mode_nx, opt = {desc="Down", expr=true, silent=true} },
 }
 
 for _, mapping in ipairs(mappings) do
