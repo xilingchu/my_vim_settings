@@ -12,5 +12,8 @@ require("lazy").setup({
 	-- require("config.plugins.surround"),
 	require("config.plugins.airline"),
 	require("config.plugins.autopairs"),
-	require("config.plugins.ultisnips")
+	-- require("config.plugins.test"),
+	-- require("config.plugins.ultisnips"),
+	require("config.plugins.lspconfig"),
+	require("config.plugins.cmp"),
 })
