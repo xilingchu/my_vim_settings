@@ -14,7 +14,15 @@ return {
 		{
 		"williamboman/mason-lspconfig.nvim",
 		opts = {
-			ensure_installed = {"lua_ls"},
+			ensure_installed = {
+					"bashls",
+					"lua_ls",
+					-- "ltex",  -- Have error while loading slf4j, don't know how to fix.
+					"fortls",
+					"marksman",
+					"pyright",
+					"texlab"
+			},
 			automatic_installation = true
 		}
 		},
@@ -27,11 +35,30 @@ return {
 		-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
 		local lsp = require('lspconfig')
-		-- Warning: Useless settings of lua.
-		lsp.lua_ls.setup{
+		lsp.bashls.setup({
 			capabilities = capabilities,
-			-- settings = require('config.lsp.lua').settings,
-		}
+			settings = require('config.lsp.bash').settings,
+		})
+		lsp.lua_ls.setup({
+			capabilities = capabilities,
+			settings = require('config.lsp.lua').settings,
+		})
+		-- lsp.ltex.setup({
+		-- 	capabilities = capabilities,
+		-- 	settings = require('config.lsp.ltex').settings,
+		-- })
+		lsp.fortls.setup({
+			capabilities = capabilities,
+		})
+		lsp.marksman.setup({
+			capabilities = capabilities,
+		})
+		lsp.pyright.setup({
+			capabilities = capabilities,
+		})
+		lsp.texlab.setup({
+			capabilities = capabilities,
+		})
 	end
 	},
 }
