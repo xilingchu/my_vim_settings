@@ -2,6 +2,7 @@ return {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
 	dependencies = {
+		"neovim/nvim-lspconfig",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
@@ -22,6 +23,7 @@ return {
 	config = function()
 		-- Load cmp-nvim
 		local cmp = require('cmp')
+		local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
 		cmp.setup({
 			snippet = {
 				expand = function(args)
@@ -43,6 +45,16 @@ return {
 				['<C-Space>'] = cmp.mapping.complete(),
 				['<C-e>'] = cmp.mapping.abort(),
 				['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+				["<Tab>"] = cmp.mapping(function(fallback)
+            				cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+          			end,
+        			{ "i", "s", --[[ "c" (to enable the mapping in command mode) ]]
+				}),
+        			["<S-Tab>"] = cmp.mapping(function(fallback)
+            				cmp_ultisnips_mappings.jump_backwards(fallback)
+          			end,
+          			{ "i", "s", --[[ "c" (to enable the mapping in command mode) ]]
+				}),
 			}),
 			sources = cmp.config.sources({
 				{ name = 'nvim_lsp' },
