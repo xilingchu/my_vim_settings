@@ -17,4 +17,6 @@ require("lazy").setup({
 	-- require("config.plugins.ultisnips"),
 	require("config.plugins.lspconfig"),
 	require("config.plugins.cmp"),
+	require("config.plugins.treesitter"),
+	require("config.plugins.wildfire"),
 })
