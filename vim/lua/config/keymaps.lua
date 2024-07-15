@@ -27,6 +27,9 @@ local mappings = {
 	{ from = "<esc>", to = "<c-\\><c-n>", mode = mode_t, opt = {desc="esc in terminal", remap=false} },
 	{ from = "<leader>te", to = ":tabnew<cr>:term<cr>", mode = mode_n, opt = {desc="New terminal", remap=false} },
 	{ from = "<leader>gi", to = ":tabnew<cr>:term lazygit<cr>", mode = mode_n, opt = {desc="Open lazygit", remap=false} },
+	-- Window settings
+	{ from = "<leader>v", to = "<c-w>t<c-w>H", mode = mode_n, opt = {desc="Horizon to vertical", remap=false} },
+	{ from = "<leader>h", to = "<c-w>t<c-w>K", mode = mode_n, opt = {desc="Vertical to horizon", remap=false} },
 	-- Switch the background
 	{ from = "<F5>", to = function()
 			if (vim.o.background == "dark")
