@@ -3,6 +3,7 @@ return {
 	event = {"BufNewFile", "BufReadPre"},
 	opts = {
 		ensure_installed = {
+			"latex",
 			"c",
 			"lua",
 			"python",
