@@ -1,7 +1,16 @@
 return {
-	"sustech-data/wildfire.nvim",
+	    -- "sustech-data/wildfire.nvim", -- cannot use in latex
+        "gcmt/wildfire.vim",
     	event = "VeryLazy",
-    	dependencies = { "nvim-treesitter/nvim-treesitter" },
-	opts = {
-	}
+    	-- dependencies = { "nvim-treesitter/nvim-treesitter" },
+	    -- opts = {
+	    -- 	surrounds = {
+   	    -- 		{ "(", ")" },
+   	    -- 		{ "{", "}" },
+   	    -- 		{ "<", ">" },
+   	    -- 		{ "[", "]" },
+   	    -- 		{ "\"", "\"" },
+   	    -- 		{ "'", "'" },
+   	    -- 	},
+	    -- },
 }
