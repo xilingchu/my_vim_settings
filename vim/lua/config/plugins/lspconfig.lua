@@ -21,6 +21,8 @@ return {
 					"fortls",
 					"marksman",
 					"pyright",
+					 -- "sqls",
+					"sqlls",
 					"texlab"
 			},
 			automatic_installation = true
@@ -56,6 +58,15 @@ return {
 		lsp.pyright.setup({
 			capabilities = capabilities,
 		})
+		lsp.sqlls.setup({
+			capabilities = capabilities,
+			filetypes = {"sql", "lua"},
+		})
+		-- lsp.sqls.setup({
+		-- 	capabilities = capabilities,
+		-- 	filetypes = {"sql", "lua"},
+		-- 	settings = require("config.lsp.sql").settings
+		-- })
 		lsp.texlab.setup({
 			capabilities = capabilities,
 		})
