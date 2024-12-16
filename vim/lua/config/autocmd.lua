@@ -5,6 +5,30 @@ local function augroup(name)
 	return vim.api.nvim_create_augroup(name, { clear = true })
 end
 
+-- -- For Debug
+-- vim.api.nvim_create_autocmd({"VimEnter"}, {
+-- 	pattern = "*",
+-- 	command = "echomsg 'vimenter event'",
+-- })
+-- vim.api.nvim_create_autocmd({"FileType"}, {
+-- 	pattern = "*",
+-- 	command = "echomsg 'filetype event '..&filetype",
+-- })
+-- vim.api.nvim_create_autocmd({"BufReadPost"}, {
+-- 	pattern = "*",
+-- 	command = "echomsg 'bufreadpost event'",
+-- })
+-- vim.api.nvim_create_autocmd({"BufReadPre"}, {
+-- 	pattern = "*",
+-- 	command = "echomsg 'bufreadpre event'",
+-- })
+
+-- Autostart Lsp
+vim.api.nvim_create_autocmd({"VimEnter"}, {
+	pattern = "*",
+	command = "doautocmd FileType",
+})
+
 -- NVIMRC
 -- Reset the configuration of vimrc if save it.
 vim.api.nvim_create_autocmd({"BufWritePost"}, {

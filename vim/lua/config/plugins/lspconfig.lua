@@ -2,13 +2,13 @@ return {
 	-- The basic LSP configs of nvim.	
 	{
 	"neovim/nvim-lspconfig",
-	event = {"BufEnter"},
+	-- Why useless?
+	-- The problem comes from lazy.nvim, it force you to open a new file to start LSP.
+	-- event = {"BufReadPre", "BufNewFile"},
+	-- event = {"VimEnter"},
 	dependencies = {
 		{
 		"williamboman/mason.nvim",
-		build = function()
-			vim.cmd([[MasonInstall]])
-		end,
 		opts = {},
 		},
 		{
@@ -30,10 +30,11 @@ return {
 		},
 		{
 		"hrsh7th/cmp-nvim-lsp",
-		opts = {}
-		}
+		},
 	},
 	config = function()
+		-- For lspconfig
+		vim.api.nvim_exec_autocmds("FileType", {})
 		-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
 		local lsp = require('lspconfig')
@@ -60,7 +61,7 @@ return {
 		})
 		lsp.sqlls.setup({
 			capabilities = capabilities,
-			filetypes = {"sql", "lua"},
+			filetypes = {"sql"},
 		})
 		-- lsp.sqls.setup({
 		-- 	capabilities = capabilities,
