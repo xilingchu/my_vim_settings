@@ -21,3 +21,5 @@ vim.foldlevelstart = 99
 -- Position of the split windows
 vim.o.splitright = true
 vim.o.splitbelow = true
+-- Default background color
+vim.o.background = "light"

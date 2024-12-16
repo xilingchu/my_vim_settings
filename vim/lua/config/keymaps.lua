@@ -34,10 +34,8 @@ local mappings = {
 	{ from = "<F5>", to = function()
 			if (vim.o.background == "dark")
 			then
-				vim.g.airline_theme = "sol"
 				vim.o.background = "light"
 			else
-				vim.g.airline_theme = "term"
 				vim.o.background = "dark"
 			end
 		end,

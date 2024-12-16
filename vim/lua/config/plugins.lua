@@ -8,10 +8,10 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Load Plugins
 require("lazy").setup({
-	require("config.plugins.tokyonight"),
-	-- require("config.plugins.surround"),
+	-- require("config.plugins.tokyonight"),
+	require("config.plugins.surround"),
 	require("config.plugins.telescope"),
-	require("config.plugins.airline"),
+	require("config.plugins.lualine"),
 	require("config.plugins.autopairs"),
 	-- require("config.plugins.test"),
 	-- require("config.plugins.ultisnips"),
@@ -19,5 +19,5 @@ require("lazy").setup({
 	require("config.plugins.cmp"),
 	require("config.plugins.treesitter"),
 	require("config.plugins.wildfire"),
-	require("config.plugins.fileEm")   -- Add my own plugin
+	-- require("config.plugins.fileEm")   -- Add my own plugin
 })
