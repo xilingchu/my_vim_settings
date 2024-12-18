@@ -1,6 +1,7 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	-- event = {"BufNewFile", "BufReadPre"},
+	lazy = false,
 	dependencies = {"neovim/nvim-lspconfig"},
 	config = function()
 		local config = require("nvim-treesitter.configs")
@@ -21,6 +22,7 @@ return {
 			sync_install = true,
 			highlight = {
 				enable = true,
+				additional_vim_regex_highlighting = false,
 			},
 			indent = {
 				enable = true,

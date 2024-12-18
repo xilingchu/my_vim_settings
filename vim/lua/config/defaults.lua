@@ -22,4 +22,4 @@ vim.foldlevelstart = 99
 vim.o.splitright = true
 vim.o.splitbelow = true
 -- Default background color
-vim.o.background = "light"
+vim.o.background = "dark"
