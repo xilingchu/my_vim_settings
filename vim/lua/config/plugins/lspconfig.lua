@@ -33,11 +33,12 @@ return {
 		},
 	},
 	config = function()
-		-- For lspconfig
-		vim.api.nvim_exec_autocmds("FileType", {})
 		-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
 		local lsp = require('lspconfig')
+		-- This settings to disable the hints required by nvim-lsp
+		-- https://github.com/microsoft/pyright/issues/4652
+		capabilities.textDocument.publishDiagnostics = { tagSupport = { valueSet = { 2 } } }
 		lsp.bashls.setup({
 			capabilities = capabilities,
 			settings = require('config.lsp.bash').settings,
