@@ -16,6 +16,7 @@ require("lazy").setup({
 	require("config.plugins.cmp"),
 	require("config.plugins.treesitter"),
 	require("config.plugins.wildfire"),
-	require("config.plugins.copilot"),
+	require("config.plugins.codecompanion")
+	-- require("config.plugins.copilot"),
 	-- require("config.plugins.fileEm")   -- Add my own plugin
 })
