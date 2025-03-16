@@ -1,3 +1,5 @@
+-- Configuration for the CodeCompanion.nvim plugin
+-- This file sets up keybindings, adapters, strategies, and UI options
 return {
 	{
 	"olimorris/codecompanion.nvim",
@@ -5,11 +7,17 @@ return {
 		dependencies = {
     		"nvim-lua/plenary.nvim",
     		"nvim-treesitter/nvim-treesitter"},
+	-- Keybindings for CodeCompanion
+	-- <leader>cc: Open chat interface
+	-- <leader>cl: Use inline suggestions in visual mode
 	keys ={
 		{ "<leader>cc", ":CodeCompanionChat<cr>", desc = "Chat" },
 		{ "<leader>cl", ":CodeCompanion", mode={'v'}, desc = "Inline" },
 		},
   	opts = {
+		-- Adapter configuration for Deepseek
+		-- Automatically selects model based on filetype
+		-- Uses environment variable for API key
 		adapters = {
 			deepseek = function()
 				local filetype = vim.bo.filetype
@@ -18,7 +26,6 @@ return {
 				if filetype == "tex" or filetype == "plaintex" then
 					model = "deepseek-reasoner"
 				end
-				print(model)
 				return require('codecompanion.adapters').extend("deepseek", {
 					env = {
 						api_key = os.getenv("DEEPSEEK_API_KEY")  -- Use environment variable
@@ -29,6 +36,9 @@ return {
 				})
 				end
 			},
+		-- Strategies for different interaction modes
+		-- chat: Full chat interface with custom keymaps
+		-- inline: Inline suggestions with accept/reject options
     		strategies = {
 			chat = {
 				adapter = "deepseek",
@@ -55,7 +65,29 @@ return {
 				},
 			},
 		},
+		-- Display configuration
+		-- chat: UI settings for chat window and icons
+		-- action_palette: Configuration for interactive prompt interface
 		display = {
+				chat = {
+					icons = {
+						pinned_buffer = " ",
+						watched_buffer = "👀 ",
+					},
+				debug_window = {
+						width = vim.o.columns - 5,
+						height = vim.o.lines - 2,
+					},
+				window = {
+						layout = "horizontal",
+						position = 'bottom',
+						height = 0.33,
+						width = 0.4,
+						opts = {
+							cursorline = true
+						}
+					}
+				},
     				action_palette = {
       					width = 95,
       					height = 10,
