@@ -3,10 +3,13 @@
 return {
 	{
 	"olimorris/codecompanion.nvim",
-
-		dependencies = {
+	dependencies = {
     		"nvim-lua/plenary.nvim",
-    		"nvim-treesitter/nvim-treesitter"},
+    		"nvim-treesitter/nvim-treesitter",
+		{
+		"ravitemer/codecompanion-history.nvim",
+		},
+	},
 	-- Keybindings for CodeCompanion
 	-- <leader>cc: Open chat interface
 	-- <leader>cl: Use inline suggestions in visual mode
@@ -15,6 +18,30 @@ return {
 		{ "<leader>cl", ":CodeCompanion", mode={'v'}, desc = "Inline" },
 		},
   	opts = {
+		extensions = {
+			history = {
+				enable = true,
+				opts = {
+                			-- Keymap to open history from chat buffer (default: gh)
+                			keymap = "gh",
+                			-- Automatically generate titles for new chats
+                			auto_generate_title = true,
+                			---On exiting and entering neovim, loads the last chat on opening chat
+                			continue_last_chat = false,
+                			---When chat is cleared with `gx` delete the chat from history
+                			delete_on_clearing_chat = false,
+                			-- Picker interface ("telescope" or "snacks" or "default")
+                			picker = "telescope",
+                			---Enable detailed logging for history extension
+                			enable_logging = false,
+                			---Directory path to save the chats
+                			dir_to_save = vim.fn.stdpath("data") .. "/codecompanion-history",
+                			-- Save all chats by default
+                			auto_save = true,
+                			-- Keymap to save the current chat manually
+                			save_chat_keymap = "sc", },
+				},
+		},
 		-- Adapter configuration for Deepseek
 		-- Automatically selects model based on filetype
 		-- Uses environment variable for API key
