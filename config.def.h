@@ -5,8 +5,9 @@ static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
-static const char *fonts[]          = { "SauceCodePro Nerd Font Mono:size=12","JoyPixels:pixelsize=24:antialias=true:autohint=true"  };
-static const char dmenufont[]       = "SauceCodePro Nerd Font Mono:size=12";
+/* Sauce Code Pro didn't support Chinese for high resolution screen */
+static const char *fonts[]          = { "Maple Mono:size=12","Maple Mono CN:size=12","JoyPixels:pixelsize=24:antialias=true:autohint=true"  };
+static const char dmenufont[]       = "Maple Mono:size=12";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -74,8 +75,8 @@ static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34
 static const char *mutecmd[] = { "pactl", "set-sink-mute", "0", "toggle", NULL };
 static const char *volupcmd[] = { "pactl", "set-sink-volume", "0", "+5%", NULL };
 static const char *voldowncmd[] = { "pactl", "set-sink-volume", "0", "-5%", NULL };
-static const char *brupcmd[] = { "sudo", "xbacklight", "-inc", "10", NULL };
-static const char *brdowncmd[] = { "sudo", "xbacklight", "-dec", "10", NULL };
+static const char *brupcmd[] = { "brightnessctl", "set", "5%+", NULL };
+static const char *brdowncmd[] = { "brightnessctl", "set", "5%-", NULL };
 static const char *rotatescreencmd[] = { "/home/xlc/.local/share/dwm/screen_rotate.sh", NULL };
 static const char *reboot[] = { "/home/xlc/.local/share/dwm/dmenu/confirm.sh", "reboot", NULL };
 static const char *poweroff[] = { "/home/xlc/.local/share/dwm/dmenu/confirm.sh", "poweroff", NULL };
@@ -86,8 +87,8 @@ static Key keys[] = {
 	{ 0,          XF86XK_AudioMute,            spawn,          {.v = mutecmd } },
 	{ 0,          XF86XK_AudioLowerVolume,     spawn,          {.v = voldowncmd } },
 	{ 0,          XF86XK_AudioRaiseVolume,     spawn,          {.v = volupcmd } },
-	{ 0,                       XK_KP_1,   spawn,          {.v = brupcmd} },
-	{ 0,                       XK_KP_2,   spawn,          {.v = brdowncmd} },
+	{ 0,          XF86XK_MonBrightnessDown,    spawn,          {.v = brdowncmd} },
+	{ 0,          XF86XK_MonBrightnessUp,      spawn,          {.v = brupcmd} },
 	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = rotatescreencmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ControlMask,           XK_p,      spawn,          {.v = poweroff } },
