@@ -5,8 +5,8 @@ static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
-static const char *fonts[]          = { "SauceCodePro Nerd Font Mono:size=14","JoyPixels:pixelsize=10:antialias=true:autohint=true"  };
-static const char dmenufont[]       = "SauceCodePro Nerd Font Mono:size=14";
+static const char *fonts[]          = { "SauceCodePro Nerd Font Mono:size=12","JoyPixels:pixelsize=24:antialias=true:autohint=true"  };
+static const char dmenufont[]       = "SauceCodePro Nerd Font Mono:size=12";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -86,8 +86,8 @@ static Key keys[] = {
 	{ 0,          XF86XK_AudioMute,            spawn,          {.v = mutecmd } },
 	{ 0,          XF86XK_AudioLowerVolume,     spawn,          {.v = voldowncmd } },
 	{ 0,          XF86XK_AudioRaiseVolume,     spawn,          {.v = volupcmd } },
-	{ 0,          XF86XK_MonBrightnessUp,      spawn,          {.v = brupcmd} },
-	{ 0,          XF86XK_MonBrightnessDown,    spawn,          {.v = brdowncmd} },
+	{ 0,                       XK_KP_1,   spawn,          {.v = brupcmd} },
+	{ 0,                       XK_KP_2,   spawn,          {.v = brdowncmd} },
 	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = rotatescreencmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ControlMask,           XK_p,      spawn,          {.v = poweroff } },
