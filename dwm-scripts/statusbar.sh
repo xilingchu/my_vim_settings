@@ -91,4 +91,10 @@ print_brightness(){
 	echo "💡$brightness"
 }
 
-xsetroot -name "$(get_alsa_output_status) $(print_brightness) $(print_bat) 📆$(print_date) 🕐$(print_time)"
+print_ram(){
+	total_ram=$(free -h|grep Mem|awk '{print $2}')
+	used_ram=$(free -h|grep Mem|awk '{print $3}')
+	echo "🐏$used_ram:$total_ram"
+}
+
+xsetroot -name "$(print_ram) $(get_alsa_output_status) $(print_brightness) $(print_bat) 📆$(print_date) 🕐$(print_time)"
