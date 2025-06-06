@@ -39,6 +39,18 @@ vim.api.nvim_create_autocmd({"BufWritePost"}, {
 	command = "source $MYVIMRC"
 })
 
+-- When editing a file, always jump to the last known cursor position.
+vim.api.nvim_create_autocmd({"BufReadPost"}, {
+	group = augroup("autojump"),
+	pattern = '*',
+	command = [[
+      		let line = line("'\"")
+      		if line >= 1 && line <= line("$") && &filetype !~# 'commit' && index(['xxd', 'gitrebase', 'tutor'], &filetype) == -1 && !&diff
+        execute "normal! g`\""
+      endif
+	]]
+
+})
 -- PySettings
 vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
 	group = augroup("pysettings"),
