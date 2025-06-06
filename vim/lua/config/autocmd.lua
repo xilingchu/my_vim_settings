@@ -5,11 +5,13 @@ local function augroup(name)
 	return vim.api.nvim_create_augroup(name, { clear = true })
 end
 
+-- Not need now
 -- -- For Debug
 -- vim.api.nvim_create_autocmd({"VimEnter"}, {
 -- 	pattern = "*",
 -- 	command = "echomsg 'vimenter event'",
 -- })
+
 -- vim.api.nvim_create_autocmd({"FileType"}, {
 -- 	pattern = "*",
 -- 	command = "echomsg 'filetype event '..&filetype",
@@ -24,10 +26,10 @@ end
 -- })
 
 -- Autostart Lsp
-vim.api.nvim_create_autocmd({"VimEnter"}, {
-	pattern = "*",
-	command = "doautocmd FileType",
-})
+-- vim.api.nvim_create_autocmd({"VimEnter"}, {
+-- 	pattern = "*",
+-- 	command = "doautocmd FileType",
+-- })
 
 -- NVIMRC
 -- Reset the configuration of vimrc if save it.
