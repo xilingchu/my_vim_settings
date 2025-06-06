@@ -40,8 +40,28 @@ get_battery_charging_status() {
 	fi
 }
 
+# Please use pactl set-default-sinks <sink id> to set the usb phone as default sink.
+# Both the pci sink should also be set as the default sink
+# It can help automatically detect the headphone and set it as the output sink.
+get_alsa_output_status() {
+	# Judge if the head phone was connect.
+	if $(pactl list sinks short|grep --quiet usb)
+	then
+		sink_id=$(pactl list sinks short|grep usb|awk '{print $1}')
+		# If mute
+		mute=$(pactl list sinks|grep -A 10 \#$sink_id|grep Mute|awk '{print $2}')
+		[[ $mute == "yes" ]] && title_emoji="🔇" || title_emoji="🎧"$(pactl list sinks|grep -A 10 \#$sink_id|grep Volume|awk '{print $5}')
+	else
+		sink_id=$(pactl list sinks short|grep --quiet pci|awk '{print $1}')
+		# If mute
+		mute=$(pactl list sinks|grep -A 10 \#$sink_id|grep Mute|awk '{print $2}')
+		[[ $mute == "yes" ]] && title_emoji="🔇" || title_emoji="🔊"$(pactl list sinks|grep -A 10 \#$sink_id|grep Volume|awk '{print $5}')
+	fi
+	echo $title_emoji
+}
+
 print_date(){
-	date '+%m.%d.%Y (%a)'
+	date '+%m.%d.%Y(%a)'
 }
 
 print_time(){
@@ -63,7 +83,7 @@ print_bat(){
 		#echo -e "${charge}"
 	#fi
 	#echo "$(get_battery_charging_status) $(get_battery_combined_percent)%, $(get_time_until_charged )";
-	echo "$(get_battery_charging_status) $(get_battery_combined_percent)%";
+	echo "$(get_battery_charging_status)$(get_battery_combined_percent)%";
 }
 
 print_brightness(){
@@ -71,4 +91,4 @@ print_brightness(){
 	echo "💡$brightness"
 }
 
-xsetroot -name "$(print_brightness) $(print_bat) 📆 $(print_date) 🕐 $(print_time)"
+xsetroot -name "$(get_alsa_output_status) $(print_brightness) $(print_bat) 📆$(print_date) 🕐$(print_time)"
