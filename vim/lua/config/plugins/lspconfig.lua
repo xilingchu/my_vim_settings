@@ -23,7 +23,8 @@ return {
 					"pyright",
 					 -- "sqls",
 					"sqlls",
-					"texlab"
+					"texlab",
+					"rust_analyzer"
 			},
 			automatic_installation = true
 		}
@@ -63,6 +64,9 @@ return {
 		lsp.sqlls.setup({
 			capabilities = capabilities,
 			filetypes = {"sql"},
+		})
+		lsp.rust_analyzer.setup({
+			capabilities = capabilities,
 		})
 		-- lsp.sqls.setup({
 		-- 	capabilities = capabilities,
