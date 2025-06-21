@@ -28,9 +28,9 @@ return {
 		local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
 		cmp.setup({
 			-- For Rust
-			completion = {
-				completeopt = vim.o.completeopt
-			},
+			-- completion = {
+			-- 	completeopt = vim.o.completeopt
+			-- },
 			snippet = {
 				expand = function(args)
 					-- REQUIRED - you must specify a snippet engine expand = function(args)
