@@ -46,7 +46,7 @@ return {
 		adapters = {
 			deepseek = function()
 				local filetype = vim.bo.filetype
-				local model = "deepseek-coder"
+				local model = "deepseek-chat"
 
 				if filetype == "tex" or filetype == "plaintex" then
 					model = "deepseek-reasoner"
@@ -80,7 +80,7 @@ return {
 		-- inline: Inline suggestions with accept/reject options
     		strategies = {
 			chat = {
-				adapter = "my_claude",
+				adapter = "deepseek",
 				keymaps = {
         				send = {
         				  modes = { n = "<C-s>", i = "<C-s>" },
@@ -91,7 +91,7 @@ return {
 				},
 			},
 			inline = {
-				adapter = "my_claude",
+				adapter = "deepseek",
 				keymaps = {
         				accept_change = {
         				  modes = { n = "ga" },
