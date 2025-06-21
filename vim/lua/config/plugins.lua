@@ -18,6 +18,7 @@ require("lazy").setup({
 	require("config.plugins.wildfire"),
 	require("config.plugins.codecompanion"),
 	require("config.plugins.lazydev"),
+	require("config.plugins.matchup"),
 	-- require("config.plugins.copilot"),
 	-- require("config.plugins.fileEm")   -- Add my own plugin
 })
