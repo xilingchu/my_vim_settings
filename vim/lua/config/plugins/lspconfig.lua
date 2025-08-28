@@ -26,7 +26,8 @@ return {
 					"texlab",
 					"rust_analyzer"
 			},
-			automatic_installation = true
+			automatic_installation = true,
+			automatic_enable = false
 		}
 		},
 		{
