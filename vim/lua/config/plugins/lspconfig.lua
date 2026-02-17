@@ -8,11 +8,11 @@ return {
 	-- event = {"VimEnter"},
 	dependencies = {
 		{
-		"williamboman/mason.nvim",
+		"mason-org/mason.nvim",
 		opts = {},
 		},
 		{
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		opts = {
 			ensure_installed = {
 					"bashls",
@@ -37,15 +37,15 @@ return {
 	config = function()
 		-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
-		local lsp = require('lspconfig')
+		-- local lsp = require('lspconfig')
 		-- This settings to disable the hints required by nvim-lsp
 		-- https://github.com/microsoft/pyright/issues/4652
 		capabilities.textDocument.publishDiagnostics = { tagSupport = { valueSet = { 2 } } }
-		lsp.bashls.setup({
+		vim.lsp.config('bashls', {
 			capabilities = capabilities,
 			settings = require('config.lsp.bash').settings,
 		})
-		lsp.lua_ls.setup({
+		vim.lsp.config('lua_ls', {
 			capabilities = capabilities,
 			settings = require('config.lsp.lua').settings,
 		})
@@ -53,20 +53,20 @@ return {
 		-- 	capabilities = capabilities,
 		-- 	settings = require('config.lsp.ltex').settings,
 		-- })
-		lsp.fortls.setup({
+		vim.lsp.config('fortls', {
 			capabilities = capabilities,
 		})
-		lsp.marksman.setup({
+		vim.lsp.config('marksman', {
 			capabilities = capabilities,
 		})
-		lsp.pyright.setup({
+		vim.lsp.config('pyright', {
 			capabilities = capabilities,
 		})
-		lsp.sqlls.setup({
+		vim.lsp.config('sqlls', {
 			capabilities = capabilities,
 			filetypes = {"sql"},
 		})
-		lsp.rust_analyzer.setup({
+		vim.lsp.config('rust_analyzer', {
 			capabilities = capabilities,
 		})
 		-- lsp.sqls.setup({
@@ -74,7 +74,7 @@ return {
 		-- 	filetypes = {"sql", "lua"},
 		-- 	settings = require("config.lsp.sql").settings
 		-- })
-		lsp.texlab.setup({
+		vim.lsp.config('texlab', {
 			capabilities = capabilities,
 		})
 	end
